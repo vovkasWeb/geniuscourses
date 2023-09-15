@@ -28,7 +28,15 @@
 <?php wp_body_open(); ?>
 
 <?php
-  
+  wp_nav_menu(
+array(
+	'theme_location' => 'header_nav',
+	'menu_class' => 'myclass',
+	'container' => 'div',
+	'container_class' => 'ContainerNavheaderVovkas', 
+	'depth' => '2'
+)
+  );
 ?>
 
 Test 1
