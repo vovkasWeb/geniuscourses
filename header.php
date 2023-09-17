@@ -32,17 +32,24 @@
 //esc_html() - html escape
 //esc_url() - link escape
 //wp_kses() - allowed html escape 
-//wp_kses_post()
+//wp_kses_post() - post html allowed
+//wp_kses_data() - comments html allwed
+//esc_js() - inline JS
+//esc_testarea()
 
-  $name = 'Alex <a href="#" title="test">Socki</a> <strong>aka CRikova</strong>';
-  $args = array(
-	'a' => array(
-		'href' => array(), 
-		'title' => array()
-	),
-	'strong' => array(),
-  );
-  echo wp_kses_post($name);
+//   $name = 'Alex <a href="#" title="test">Socki</a> <strong>aka CRikova</strong>';
+//   $args = array(
+// 	'a' => array(
+// 		'href' => array(), 
+// 		'title' => array()
+// 	),
+// 	'strong' => array(),
+//   );
+//   echo wp_kses_post($name);
+
+ esc_html__('Hello','geniuscourses');
+
+ esc_html_e('Hello ','geniuscourses');
 ?>
 
 

@@ -62,17 +62,11 @@ function geniuscourses_theme_init(){
 		)
 	);
 
+	load_theme_textdomain('geniuscourses',get_template_directory().'/lang');
 }
 add_action('after_setup_theme','geniuscourses_theme_init',0);
 
 
-function geniuscourses_custom_search($form){
-	 $form = "html for form";
-
-	 return $form;
-}
-
-add_filter('get_search_form', 'geniuscourses_custom_search');
 
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -88,13 +82,7 @@ if ( ! defined( '_S_VERSION' ) ) {
  * as indicating support for post thumbnails.
  */
 function geniuscourses_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Geniuscourses, use a find and replace
-		* to change 'geniuscourses' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'geniuscourses', get_template_directory() . '/languages' );
+
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
