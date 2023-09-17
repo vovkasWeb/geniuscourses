@@ -28,16 +28,22 @@
 <?php wp_body_open(); ?>
 
 <?php
-  wp_nav_menu(
-array(
-	'theme_location' => 'header_nav',
-	'menu_class' => 'myclass',
-	'container' => 'div',
-	'container_class' => 'ContainerNavheaderVovkas', 
-	'depth' => '2'
-)
+//esc_attr() - attributes escape
+//esc_html() - html escape
+//esc_url() - link escape
+//wp_kses() - allowed html escape 
+//wp_kses_post()
+
+  $name = 'Alex <a href="#" title="test">Socki</a> <strong>aka CRikova</strong>';
+  $args = array(
+	'a' => array(
+		'href' => array(), 
+		'title' => array()
+	),
+	'strong' => array(),
   );
+  echo wp_kses_post($name);
 ?>
 
-Test 1
+
 

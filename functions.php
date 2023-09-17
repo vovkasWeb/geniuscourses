@@ -44,13 +44,35 @@ add_action('wp_head','geniuscourses_show_meta');
 // add_filter('body_class', 'geniuscourses_body_class');
 
 
-function geniuscourses_register_menus(){
+function geniuscourses_theme_init(){
 	register_nav_menus(array(
 		'header_nav' => 'Header Navigation',
 		'footer_nav' => 'Footer Navigation'
 	));
+		add_theme_support(
+		'html5',
+		array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'style',
+			'script',
+		)
+	);
+
 }
-add_action('after_setup_theme','geniuscourses_register_menus',0);
+add_action('after_setup_theme','geniuscourses_theme_init',0);
+
+
+function geniuscourses_custom_search($form){
+	 $form = "html for form";
+
+	 return $form;
+}
+
+add_filter('get_search_form', 'geniuscourses_custom_search');
 
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -94,22 +116,7 @@ function geniuscourses_setup() {
 
 
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-		)
-	);
+
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support(
