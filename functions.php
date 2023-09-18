@@ -23,13 +23,59 @@ if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 }
 }
 add_action('wp_enqueue_scripts','geniuscourses_enqueue_scripts');
-
-
+ 
 function geniuscourses_show_meta(){
 	echo "<meta name='author' content='CRIK0VA' >"; 
 }
 
 add_action('wp_head','geniuscourses_show_meta');
+
+
+function geniuscourses_register_post_type(){
+	$args = array(
+       'label' => esc_html__('Cars','geniuscourses'),
+	   'labels' => array(
+	   'name'                  => esc_html_x( 'Cars', 'Post type general name', 'geniuscourses' ),
+	   'singular_name'         => esc_html_x( 'Car', 'Post type singular name', 'geniuscourses' ),
+	   'menu_name'             => esc_html_x( 'Cars', 'Admin Menu text', 'geniuscourses' ),
+	   'name_admin_bar'        => esc_html_x( 'Car', 'Add New on Toolbar', 'geniuscourses' ),
+	   'add_new'               => esc_html__( 'Add New', 'geniuscourses' ),
+	   'add_new_item'          => esc_html__( 'Add New Car', 'geniuscourses' ),
+	   'new_item'              => esc_html__( 'New Car', 'geniuscourses' ),
+	   'edit_item'             => esc_html__( 'Edit Car', 'geniuscourses' ),
+	   'view_item'             => esc_html__( 'View Car', 'geniuscourses' ),
+	   'all_items'             => esc_html__( 'All Cars', 'geniuscourses' ),
+	   'search_items'          => esc_html__( 'Search Cars', 'geniuscourses' ),
+	   'parent_item_colon'     => esc_html__( 'Parent Cars:', 'geniuscourses' ),
+	   'not_found'             => esc_html__( 'No Cars found.', 'geniuscourses' ),
+	   'not_found_in_trash'    => esc_html__( 'No Cars found in Trash.', 'geniuscourses' ),
+	   'featured_image'        => esc_html_x( 'Car Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'geniuscourses' ),
+	   'set_featured_image'    => esc_html_x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'geniuscourses' ),
+	   'remove_featured_image' => esc_html_x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'geniuscourses' ),
+	   'use_featured_image'    => esc_html_x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'geniuscourses' ),
+	   'archives'              => esc_html_x( 'Car archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'geniuscourses' ),
+	   'insert_into_item'      => esc_html_x( 'Insert into Car', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'geniuscourses' ),
+	   'uploaded_to_this_item' => esc_html_x( 'Uploaded to this Car', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'geniuscourses' ),
+	   'filter_items_list'     => esc_html_x( 'Filter Cars list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'geniuscourses' ),
+	   'items_list_navigation' => esc_html_x( 'Cars list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'geniuscourses' ),
+	   'items_list'            => esc_html_x( 'Cars list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'geniuscourses' ),
+	), 
+	 'support' => array('title','editor','author','thumbnail'),
+	 'public' => true,
+	 'publicly_queryable' => true,
+	 'show_ui' => true,
+	 'show_in_menu' => true,
+	 'has_archive' =>true,
+	 'show_in_nav_menus' => false,
+	 'show_in_admin_bar' => false,
+	   );
+register_post_type('car',$args);
+}
+add_action('init','geniuscourses_register_post_type');
+
+
+
+
 
 
 // function geniuscourses_body_class($classes){
@@ -62,7 +108,7 @@ function geniuscourses_theme_init(){
 		)
 	);
 
-	load_theme_textdomain('geniuscourses',get_template_directory().'/lang');
+	load_theme_textdomain('geniuscourses', get_template_directory().'/lang');
 }
 add_action('after_setup_theme','geniuscourses_theme_init',0);
 
